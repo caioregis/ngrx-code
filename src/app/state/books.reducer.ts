@@ -5,7 +5,7 @@ import { retrievedBookList, removeBook, addBook } from './books.actions';
 export const booksReducer = createReducer(
   initialState,
   on(retrievedBookList, (state, {Book}) => {
-   const booksList = [...Book, ...state.bookList];
+   const booksList = [...Book, ...state.booksList];
    return {...state, booksList };
   }),
   on(removeBook, (state, { bookId }) => {

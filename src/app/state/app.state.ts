@@ -6,7 +6,7 @@ export interface AppState {
 };
 
 export const initialState = {
-  bookList: [],
+  booksList: [],
   collection: [],
 };
 
