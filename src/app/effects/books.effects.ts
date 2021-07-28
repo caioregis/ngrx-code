@@ -20,24 +20,9 @@ export class BookEffects {
     ofType(getBooksApi),
     switchMap(({ query }) => this.booksService.getBooks(query)
       .pipe(
-        tap(bookList => console.log('effects =>>', bookList)),
-        concatMap(bookList => of(retrievedBookList({ bookList })))
+        concatMap(Book => of(retrievedBookList({ Book })))
       ))
   )
   );
-
-
-  /* testeParameter$ =  createEffect(() => this.actions$.pipe(
-    ofType(testParameter),
-    switchMap(payload => {
-      console.log('payload:', payload.parameter);
-      return this.booksService.getBooks()
-      .pipe(
-        tap(Book => console.log('effects =>>', Book)),
-       concatMap(Book => of(retrievedBookList({ Book })))
-      )
-    })
-  )
-  ); */
 
 }

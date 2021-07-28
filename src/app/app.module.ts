@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 // import { booksReducer } from './state/books.reducer';
 // import { collectionReducer } from './state/collection.reducer';
 import { booksReducer as books } from './state/books.reducer';
-import { collectionReducer as collection} from './state/collection.reducer';
 
 import { StoreModule } from '@ngrx/store';
 import { BookListComponent } from './book-list/book-list.component';
@@ -26,7 +25,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
    /*  StoreModule.forRoot({ books: booksReducer, collection: collectionReducer }), */
-    StoreModule.forRoot({ books, collection }),
+    StoreModule.forRoot({ books }),
     HttpClientModule,
     EffectsModule.forRoot([BookEffects]),
     FormsModule

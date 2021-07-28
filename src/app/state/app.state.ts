@@ -1,11 +1,12 @@
 import { Book } from '../book-list/books.model';
 
 export interface AppState {
-  books: ReadonlyArray<Book>;
+  booksList: ReadonlyArray<Book>;
   collection: ReadonlyArray<string>;
-}
+};
 
 export const initialState = {
-  books: [],
-  collection: []
+  bookList: [],
+  collection: [],
 };
+
