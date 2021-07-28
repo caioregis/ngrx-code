@@ -1,0 +1,39 @@
+<h5 class="title text-uppercase mb-2">{{title}}</h5>
+
+<div style="overflow-y: auto;max-height: 400px;">
+  <table
+    *ngIf="books?.length; else elseBlock"
+    class="table table-striped">
+    <th>Título do Livro</th>
+    <th>Autor</th>
+    <th>Ação</th>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{book.volumeInfo.title}}</td>
+        <td>{{book.volumeInfo.authors}}</td>
+        <td>
+          <div
+            *ngIf="addType"
+            (click)="add.emit(book.id)"
+            class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill text-success" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+            </svg>
+          </div>
+          <div
+            *ngIf="!addType"
+            (click)="remove.emit(book.id)"
+            class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill text-danger" viewBox="0 0 16 16">
+              <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+            </svg>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #elseBlock>
+  <div class="text-center alert alert-warning">Não tem nada!</div>
+</ng-template>

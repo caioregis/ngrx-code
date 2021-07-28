@@ -1,0 +1,38 @@
+
+<div class="container">
+    <h1 class="mt-1">NGRX na prática (code)</h1>
+    <hr />
+
+    <div class="row mb-4">
+        <div class="col-6 d-flex">
+            <input 
+                class="form-control" 
+                placeholder="Buscar"
+                type="text"
+                [(ngModel)]="search"
+            />
+
+            <button
+                class="btn btn-primary ml-3"
+                (click)="searched(search)">Buscar</button>
+        </div>
+    </div>
+
+    <div class="row justify-content-around">
+        <div class="col-6">
+            <app-book-list
+                title="Livros Pesquisados" 
+                [books]="books$ | async" 
+                (add)="onAdd($event)">
+            </app-book-list>
+        </div>
+        <div class="col-6">
+            <app-book-list
+                title="Minha Coleção" 
+                [addType]="false"
+                [books]="bookCollection$ | async" 
+                (remove)="onRemove($event)">
+            </app-book-list>
+        </div>
+    </div>
+</div>
